@@ -8,8 +8,17 @@ import java.time.LocalDateTime;
 public class PessoaTest {
 
     @Test
-    void validarCalculoDeIdade(){
-        Pessoa pessoa = new Pessoa("Julia", LocalDateTime.of(2020,1,1, 12,0,0));
-        Assertions.assertEquals(3, pessoa.getIdade());
+    void deveCalcularIdadeCorretamente(){
+        Pessoa jessica = new Pessoa("Jessica", LocalDateTime.of(2000,1,1, 15,0,0));
+        Assertions.assertEquals(23, jessica.getIdade());
+    }
+
+    @Test
+    void deveRetornarSeEhMaiorDeIdade(){
+        Pessoa jessica = new Pessoa("Jessica", LocalDateTime.of(2000,1,1, 15,0,0));
+        Assertions.assertTrue(jessica.ehMaiorDeIdade());
+
+        Pessoa joao = new Pessoa("Joao", LocalDateTime.now());
+        Assertions.assertFalse(joao.ehMaiorDeIdade());
     }
 }
